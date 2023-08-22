@@ -19,7 +19,7 @@ A Go Lang package for dealing with Arabic text. Forked from [01walid's package](
 
 ### Importing
 ```go
-go get github.com/01walid/goarabic
+go get github.com/amrojjeh/goarabic
 ```
 ##### Example Usage
 ```go
