@@ -2,7 +2,7 @@
 # GoArabic
 [![GoDoc](https://godoc.org/github.com/amrojjeh/goarabic?status.svg)](https://godoc.org/github.com/amrojjeh/goarabic)
 
-A Go Lang package for dealing with Arabic text.
+A Go Lang package for dealing with Arabic text. Forked from [01walid's package](github.com/01walid/goarabic).
 
 ## Current functionalities
 - Glyph representation of the given Arabic text.
@@ -27,7 +27,7 @@ package main
 
 import (
     "fmt"
-    "github.com/01walid/goarabic"
+    "github.com/amrojjeh/goarabic"
 )
 
 func main() {
