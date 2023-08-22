@@ -6,16 +6,16 @@ type Harf struct {
 }
 
 // Vowels (Tashkeel) characters.
-var (
-	FATHA            rune = '\u064e'
-	FATHATAN         rune = '\u064b'
-	DAMMA            rune = '\u064f'
-	DAMMATAN         rune = '\u064c'
-	KASRA            rune = '\u0650'
-	KASRATAN         rune = '\u064d'
-	SHADDA           rune = '\u0651'
-	SUKUN            rune = '\u0652'
-	SUPERSCRIPT_ALEF rune = '\u0670'
+const (
+	FATHA            = '\u064e'
+	FATHATAN         = '\u064b'
+	DAMMA            = '\u064f'
+	DAMMATAN         = '\u064c'
+	KASRA            = '\u0650'
+	KASRATAN         = '\u064d'
+	SHADDA           = '\u0651'
+	SUKUN            = '\u0652'
+	SUPERSCRIPT_ALEF = '\u0670'
 )
 
 // Arabic Alphabet using the Harf type.
