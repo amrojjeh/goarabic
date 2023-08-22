@@ -1,7 +1,10 @@
 // Package goarabic contains utility functions for working with strings.
 package goarabic
 
-import "testing"
+import (
+	"testing"
+	"unicode/utf8"
+)
 
 // Reverse returns its argument string reversed rune-wise left to right.
 func TestReverse(t *testing.T) {
@@ -104,6 +107,26 @@ func TestRemoveAllNonArabicChars(t *testing.T) {
 		got := RemoveAllNonArabicChars(c.in)
 		if got != c.want {
 			t.Errorf("RemoveAllNonArabicChars(%q) == %q, want %q", c.in, got, c.want)
+		}
+	}
+}
+
+func TestSafeBWToAr(t *testing.T) {
+	ans := "هَذَا بَيْتٌ"
+	ar, err := SafeBWToAr("haVaA bayotN")
+	if err != nil {
+		t.Errorf("SafeBWToAr(\"haVaA bayotN\") raised error: %v", err)
+	} else if !utf8.ValidString(ar) {
+		t.Error("SafeBWToAr(\"haVaA bayotN\") is an invalid string")
+	} else if ar != ans {
+		t.Errorf("SafeBWToAr(\"haVaA bayotN\") = (%s); want (%s)", ar, ans)
+		t.Error("Returned result:\n")
+		for _, v := range ar {
+			t.Errorf("%U\n", v)
+		}
+		t.Error("Answer:\n")
+		for _, v := range ans {
+			t.Errorf("%U\n", v)
 		}
 	}
 }

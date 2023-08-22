@@ -2,342 +2,358 @@ package goarabic
 
 // Harf holds the Arabic character with its different representation forms (glyphs).
 type Harf struct {
-	Unicode, Isolated, Beggining, Medium, Final rune
+	Base, Isolated, Beginning, Medial, Final rune
 }
 
 // Vowels (Tashkeel) characters.
 var (
-	FATHA    rune = '\u064e'
-	FATHATAN rune = '\u064b'
-	DAMMA    rune = '\u064f'
-	DAMMATAN rune = '\u064c'
-	KASRA    rune = '\u0650'
-	KASRATAN rune = '\u064d'
-	SHADDA   rune = '\u0651'
-	SUKUN    rune = '\u0652'
+	FATHA            rune = '\u064e'
+	FATHATAN         rune = '\u064b'
+	DAMMA            rune = '\u064f'
+	DAMMATAN         rune = '\u064c'
+	KASRA            rune = '\u0650'
+	KASRATAN         rune = '\u064d'
+	SHADDA           rune = '\u0651'
+	SUKUN            rune = '\u0652'
+	SUPERSCRIPT_ALEF rune = '\u0670'
 )
 
-// Arabic Alphabet using the new Harf type.
+// Arabic Alphabet using the Harf type.
 var (
+	ALEF_WASLA = Harf{ // ٱ
+		Base:      '\u0671',
+		Isolated:  '\ufb50',
+		Beginning: '\u0671',
+		Medial:    '\u0671',
+		Final:     '\ufb61'}
+
 	ALEF_HAMZA_ABOVE = Harf{ // أ
-		Unicode:   '\u0623',
+		Base:      '\u0623',
 		Isolated:  '\ufe83',
-		Beggining: '\u0623',
-		Medium:    '\ufe84',
+		Beginning: '\u0623',
+		Medial:    '\ufe84',
 		Final:     '\ufe84'}
 
 	ALEF = Harf{ // ا
-		Unicode:   '\u0627',
+		Base:      '\u0627',
 		Isolated:  '\ufe8d',
-		Beggining: '\u0627',
-		Medium:    '\ufe8e',
+		Beginning: '\u0627',
+		Medial:    '\ufe8e',
 		Final:     '\ufe8e'}
 
 	ALEF_MADDA_ABOVE = Harf{ // آ
-		Unicode:   '\u0622',
+		Base:      '\u0622',
 		Isolated:  '\ufe81',
-		Beggining: '\u0622',
-		Medium:    '\ufe82',
+		Beginning: '\u0622',
+		Medial:    '\ufe82',
 		Final:     '\ufe82'}
 
 	HAMZA = Harf{ // ء
-		Unicode:   '\u0621',
+		Base:      '\u0621',
 		Isolated:  '\ufe80',
-		Beggining: '\u0621',
-		Medium:    '\u0621',
+		Beginning: '\u0621',
+		Medial:    '\u0621',
 		Final:     '\u0621'}
 
 	WAW_HAMZA_ABOVE = Harf{ // ؤ
-		Unicode:   '\u0624',
+		Base:      '\u0624',
 		Isolated:  '\ufe85',
-		Beggining: '\u0624',
-		Medium:    '\ufe86',
+		Beginning: '\u0624',
+		Medial:    '\ufe86',
 		Final:     '\ufe86'}
 
 	ALEF_HAMZA_BELOW = Harf{ // أ
-		Unicode:   '\u0625',
+		Base:      '\u0625',
 		Isolated:  '\ufe87',
-		Beggining: '\u0625',
-		Medium:    '\ufe88',
+		Beginning: '\u0625',
+		Medial:    '\ufe88',
 		Final:     '\ufe88'}
 
 	YEH_HAMZA_ABOVE = Harf{ // ئ
-		Unicode:   '\u0626',
+		Base:      '\u0626',
 		Isolated:  '\ufe89',
-		Beggining: '\ufe8b',
-		Medium:    '\ufe8c',
+		Beginning: '\ufe8b',
+		Medial:    '\ufe8c',
 		Final:     '\ufe8a'}
 
 	BEH = Harf{ // ب
-		Unicode:   '\u0628',
+		Base:      '\u0628',
 		Isolated:  '\ufe8f',
-		Beggining: '\ufe91',
-		Medium:    '\ufe92',
+		Beginning: '\ufe91',
+		Medial:    '\ufe92',
 		Final:     '\ufe90'}
 
 	PEH = Harf{ // پ
-		Unicode:   '\u067e',
+		Base:      '\u067e',
 		Isolated:  '\ufb56',
-		Beggining: '\ufb58',
-		Medium:    '\ufb59',
+		Beginning: '\ufb58',
+		Medial:    '\ufb59',
 		Final:     '\ufb57'}
 
 	TEH = Harf{ // ت
-		Unicode:   '\u062A',
+		Base:      '\u062A',
 		Isolated:  '\ufe95',
-		Beggining: '\ufe97',
-		Medium:    '\ufe98',
+		Beginning: '\ufe97',
+		Medial:    '\ufe98',
 		Final:     '\ufe96'}
 
 	TEH_MARBUTA = Harf{ // ة
-		Unicode:   '\u0629',
+		Base:      '\u0629',
 		Isolated:  '\ufe93',
-		Beggining: '\u0629',
-		Medium:    '\u0629',
+		Beginning: '\u0629',
+		Medial:    '\u0629',
 		Final:     '\ufe94'}
 
 	THEH = Harf{ // ث
-		Unicode:   '\u062b',
+		Base:      '\u062b',
 		Isolated:  '\ufe99',
-		Beggining: '\ufe9b',
-		Medium:    '\ufe9c',
+		Beginning: '\ufe9b',
+		Medial:    '\ufe9c',
 		Final:     '\ufe9a'}
 
 	JEEM = Harf{ // ج
-		Unicode:   '\u062c',
+		Base:      '\u062c',
 		Isolated:  '\ufe9d',
-		Beggining: '\ufe9f',
-		Medium:    '\ufea0',
+		Beginning: '\ufe9f',
+		Medial:    '\ufea0',
 		Final:     '\ufe9e'}
 
 	TCHEH = Harf{ // چ
-		Unicode:   '\u0686',
+		Base:      '\u0686',
 		Isolated:  '\ufb7a',
-		Beggining: '\ufb7c',
-		Medium:    '\ufb7d',
+		Beginning: '\ufb7c',
+		Medial:    '\ufb7d',
 		Final:     '\ufb7b'}
 
 	HAH = Harf{ // ح
-		Unicode:   '\u062d',
+		Base:      '\u062d',
 		Isolated:  '\ufea1',
-		Beggining: '\ufea3',
-		Medium:    '\ufea4',
+		Beginning: '\ufea3',
+		Medial:    '\ufea4',
 		Final:     '\ufea2'}
 
 	KHAH = Harf{ // خ
-		Unicode:   '\u062e',
+		Base:      '\u062e',
 		Isolated:  '\ufea5',
-		Beggining: '\ufea7',
-		Medium:    '\ufea8',
+		Beginning: '\ufea7',
+		Medial:    '\ufea8',
 		Final:     '\ufea6'}
 
 	DAL = Harf{ // د
-		Unicode:   '\u062f',
+		Base:      '\u062f',
 		Isolated:  '\ufea9',
-		Beggining: '\u062f',
-		Medium:    '\ufeaa',
+		Beginning: '\u062f',
+		Medial:    '\ufeaa',
 		Final:     '\ufeaa'}
 
 	THAL = Harf{ // ذ
-		Unicode:   '\u0630',
+		Base:      '\u0630',
 		Isolated:  '\ufeab',
-		Beggining: '\u0630',
-		Medium:    '\ufeac',
+		Beginning: '\u0630',
+		Medial:    '\ufeac',
 		Final:     '\ufeac'}
 
 	REH = Harf{ // ر
-		Unicode:   '\u0631',
+		Base:      '\u0631',
 		Isolated:  '\ufead',
-		Beggining: '\u0631',
-		Medium:    '\ufeae',
+		Beginning: '\u0631',
+		Medial:    '\ufeae',
 		Final:     '\ufeae'}
 
 	JEH = Harf{
-		Unicode:   '\u0698',
+		Base:      '\u0698',
 		Isolated:  '\ufb8a',
-		Beggining: '\u0698',
-		Medium:    '\ufb8b',
+		Beginning: '\u0698',
+		Medial:    '\ufb8b',
 		Final:     '\ufb8b',
 	}
 
 	ZAIN = Harf{ // ز
-		Unicode:   '\u0632',
+		Base:      '\u0632',
 		Isolated:  '\ufeaf',
-		Beggining: '\u0632',
-		Medium:    '\ufeb0',
+		Beginning: '\u0632',
+		Medial:    '\ufeb0',
 		Final:     '\ufeb0'}
 
 	SEEN = Harf{ // س
-		Unicode:   '\u0633',
+		Base:      '\u0633',
 		Isolated:  '\ufeb1',
-		Beggining: '\ufeb3',
-		Medium:    '\ufeb4',
+		Beginning: '\ufeb3',
+		Medial:    '\ufeb4',
 		Final:     '\ufeb2'}
 
 	SHEEN = Harf{ // ش
-		Unicode:   '\u0634',
+		Base:      '\u0634',
 		Isolated:  '\ufeb5',
-		Beggining: '\ufeb7',
-		Medium:    '\ufeb8',
+		Beginning: '\ufeb7',
+		Medial:    '\ufeb8',
 		Final:     '\ufeb6'}
 
 	SAD = Harf{ // ص
-		Unicode:   '\u0635',
+		Base:      '\u0635',
 		Isolated:  '\ufeb9',
-		Beggining: '\ufebb',
-		Medium:    '\ufebc',
+		Beginning: '\ufebb',
+		Medial:    '\ufebc',
 		Final:     '\ufeba'}
 
 	DAD = Harf{ // ض
-		Unicode:   '\u0636',
+		Base:      '\u0636',
 		Isolated:  '\ufebd',
-		Beggining: '\ufebf',
-		Medium:    '\ufec0',
+		Beginning: '\ufebf',
+		Medial:    '\ufec0',
 		Final:     '\ufebe'}
 
 	TAH = Harf{ // ط
-		Unicode:   '\u0637',
+		Base:      '\u0637',
 		Isolated:  '\ufec1',
-		Beggining: '\ufec3',
-		Medium:    '\ufec4',
+		Beginning: '\ufec3',
+		Medial:    '\ufec4',
 		Final:     '\ufec2'}
 
 	ZAH = Harf{ // ظ
-		Unicode:   '\u0638',
+		Base:      '\u0638',
 		Isolated:  '\ufec5',
-		Beggining: '\ufec7',
-		Medium:    '\ufec8',
+		Beginning: '\ufec7',
+		Medial:    '\ufec8',
 		Final:     '\ufec6'}
 
 	AIN = Harf{ // ع
-		Unicode:   '\u0639',
+		Base:      '\u0639',
 		Isolated:  '\ufec9',
-		Beggining: '\ufecb',
-		Medium:    '\ufecc',
+		Beginning: '\ufecb',
+		Medial:    '\ufecc',
 		Final:     '\ufeca'}
 
 	GHAIN = Harf{ // غ
-		Unicode:   '\u063a',
+		Base:      '\u063a',
 		Isolated:  '\ufecd',
-		Beggining: '\ufecf',
-		Medium:    '\ufed0',
+		Beginning: '\ufecf',
+		Medial:    '\ufed0',
 		Final:     '\ufece'}
 
 	FEH = Harf{ // ف
-		Unicode:   '\u0641',
+		Base:      '\u0641',
 		Isolated:  '\ufed1',
-		Beggining: '\ufed3',
-		Medium:    '\ufed4',
+		Beginning: '\ufed3',
+		Medial:    '\ufed4',
 		Final:     '\ufed2'}
 
 	QAF = Harf{ // ق
-		Unicode:   '\u0642',
+		Base:      '\u0642',
 		Isolated:  '\ufed5',
-		Beggining: '\ufed7',
-		Medium:    '\ufed8',
+		Beginning: '\ufed7',
+		Medial:    '\ufed8',
 		Final:     '\ufed6'}
 
+	VEH = Harf{ // ڤ
+		Base:      '\u06a4',
+		Isolated:  '\ufb6a',
+		Beginning: '\ufb6c',
+		Medial:    '\ufb6d',
+		Final:     '\ufb6b'}
+
 	KAF = Harf{ // ك
-		Unicode:   '\u0643',
+		Base:      '\u0643',
 		Isolated:  '\ufed9',
-		Beggining: '\ufedb',
-		Medium:    '\ufedc',
+		Beginning: '\ufedb',
+		Medial:    '\ufedc',
 		Final:     '\ufeda'}
 
 	KEHEH = Harf{ // ک
-		Unicode:   '\u06a9',
+		Base:      '\u06a9',
 		Isolated:  '\ufb8e',
-		Beggining: '\ufb90',
-		Medium:    '\ufb91',
+		Beginning: '\ufb90',
+		Medial:    '\ufb91',
 		Final:     '\ufb8f',
 	}
 
 	GAF = Harf{ // گ
-		Unicode:   '\u06af',
+		Base:      '\u06af',
 		Isolated:  '\ufb92',
-		Beggining: '\ufb94',
-		Medium:    '\ufb95',
+		Beginning: '\ufb94',
+		Medial:    '\ufb95',
 		Final:     '\ufb93'}
 
 	LAM = Harf{ // ل
-		Unicode:   '\u0644',
+		Base:      '\u0644',
 		Isolated:  '\ufedd',
-		Beggining: '\ufedf',
-		Medium:    '\ufee0',
+		Beginning: '\ufedf',
+		Medial:    '\ufee0',
 		Final:     '\ufede'}
 
 	MEEM = Harf{ // م
-		Unicode:   '\u0645',
+		Base:      '\u0645',
 		Isolated:  '\ufee1',
-		Beggining: '\ufee3',
-		Medium:    '\ufee4',
+		Beginning: '\ufee3',
+		Medial:    '\ufee4',
 		Final:     '\ufee2'}
 
 	NOON = Harf{ // ن
-		Unicode:   '\u0646',
+		Base:      '\u0646',
 		Isolated:  '\ufee5',
-		Beggining: '\ufee7',
-		Medium:    '\ufee8',
+		Beginning: '\ufee7',
+		Medial:    '\ufee8',
 		Final:     '\ufee6'}
 
 	HEH = Harf{ // ه
-		Unicode:   '\u0647',
+		Base:      '\u0647',
 		Isolated:  '\ufee9',
-		Beggining: '\ufeeb',
-		Medium:    '\ufeec',
+		Beginning: '\ufeeb',
+		Medial:    '\ufeec',
 		Final:     '\ufeea'}
 
 	WAW = Harf{ // و
-		Unicode:   '\u0648',
+		Base:      '\u0648',
 		Isolated:  '\ufeed',
-		Beggining: '\u0648',
-		Medium:    '\ufeee',
+		Beginning: '\u0648',
+		Medial:    '\ufeee',
 		Final:     '\ufeee'}
 
-	YEH = Harf{ // ی
-		Unicode:   '\u06cc',
+	FARSIYEH = Harf{ // ی
+		Base:      '\u06cc',
 		Isolated:  '\ufbfc',
-		Beggining: '\ufbfe',
-		Medium:    '\ufbff',
+		Beginning: '\ufbfe',
+		Medial:    '\ufbff',
 		Final:     '\ufbfd'}
 
-	ARABICYEH = Harf{ // ي
-		Unicode:   '\u064a',
+	YEH = Harf{ // ي
+		Base:      '\u064a',
 		Isolated:  '\ufef1',
-		Beggining: '\ufef3',
-		Medium:    '\ufef4',
+		Beginning: '\ufef3',
+		Medial:    '\ufef4',
 		Final:     '\ufef2'}
 
 	ALEF_MAKSURA = Harf{ // ى
-		Unicode:   '\u0649',
+		Base:      '\u0649',
 		Isolated:  '\ufeef',
-		Beggining: '\u0649',
-		Medium:    '\ufef0',
+		Beginning: '\u0649',
+		Medial:    '\ufef0',
 		Final:     '\ufef0'}
 
 	TATWEEL = Harf{ // ـ
-		Unicode:   '\u0640',
+		Base:      '\u0640',
 		Isolated:  '\u0640',
-		Beggining: '\u0640',
-		Medium:    '\u0640',
+		Beginning: '\u0640',
+		Medial:    '\u0640',
 		Final:     '\u0640'}
 
 	LAM_ALEF = Harf{ // لا
-		Unicode:   '\ufefb',
+		Base:      '\ufefb',
 		Isolated:  '\ufefb',
-		Beggining: '\ufefb',
-		Medium:    '\ufefc',
+		Beginning: '\ufefb',
+		Medial:    '\ufefc',
 		Final:     '\ufefc'}
 
 	LAM_ALEF_HAMZA_ABOVE = Harf{ // ﻷ
-		Unicode:   '\ufef7',
+		Base:      '\ufef7',
 		Isolated:  '\ufef7',
-		Beggining: '\ufef7',
-		Medium:    '\ufef8',
+		Beginning: '\ufef7',
+		Medial:    '\ufef8',
 		Final:     '\ufef8'}
 )
 
 var alphabet = []Harf{
+	ALEF_WASLA,
 	ALEF_HAMZA_ABOVE,
 	ALEF,
 	ALEF_MADDA_ABOVE,
@@ -369,6 +385,7 @@ var alphabet = []Harf{
 	GHAIN,
 	FEH,
 	QAF,
+	VEH,
 	KAF,
 	KEHEH,
 	GAF,
@@ -378,7 +395,7 @@ var alphabet = []Harf{
 	HEH,
 	WAW,
 	YEH,
-	ARABICYEH,
+	FARSIYEH,
 	ALEF_MAKSURA,
 	TATWEEL,
 	LAM_ALEF,
